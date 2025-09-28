@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<title>ChatApp - Room Management</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#3a91e9",
+            "background-light": "#f6f7f8",
+            "background-dark": "#111921",
+          },
+          fontFamily: {
+            "display": ["Inter"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col min-h-screen">
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-white/10 dark:border-white/10">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<svg fill="none" height="28" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+</svg>
+</div>
+<h1 class="text-xl font-bold text-black dark:text-white">ChatApp</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+<a class="text-black/70 dark:text-white/70 hover:text-primary dark:hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-primary font-semibold" href="#">Rooms</a>
+<a class="text-black/70 dark:text-white/70 hover:text-primary dark:hover:text-primary transition-colors" href="#">Profile</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-black/70 dark:text-white/70 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="User avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZRhVcFEnDllDWLHfSvLazHz86uCrqAqLeJzTvrp9WL_l2qR67NtWue94Rp7mqj--TwP6BWoWGFY5IF8ubdxragcSFAXxGbfw0ZyvBGuVbNpktDb1hm1e7au2oTM3X2uNfbqpuSzAj2Rgf_t1xN7BxOo0vY7H2_AAKFKnrLROatAb4QmQkWvPQCM-QNb-T33kkpq9hmXzUUaCIa-HeabZ1WpLCY0Fi1dDjp-pxKSX7JyzIjQBAV2TFt38jABMmrZ4ngfSksRNNeF0"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+<div class="max-w-4xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+<div>
+<h2 class="text-3xl font-bold text-black dark:text-white">Room Management</h2>
+<p class="mt-1 text-black/60 dark:text-white/60">Manage members and control chat flow.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center gap-2 h-10 px-4 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-colors">
+<span class="material-symbols-outlined text-base">call_end</span>
+<span class="text-sm font-medium">End Chat</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-10 px-4 rounded-lg bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 transition-colors">
+<span class="material-symbols-outlined text-base">pause_circle</span>
+<span class="text-sm font-medium">Pause Chat</span>
+</button>
+</div>
+</div>
+<div class="bg-white/5 dark:bg-black/10 rounded-xl border border-white/10 dark:border-white/10 overflow-hidden">
+<div class="px-6 py-4 border-b border-white/10 dark:border-white/10">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+<h3 class="text-lg font-semibold text-black dark:text-white">Members (5)</h3>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-black/40 dark:text-white/40">search</span>
+<input class="w-full sm:w-64 bg-white/5 dark:bg-black/20 border-white/10 dark:border-white/20 rounded-lg pl-10 pr-4 py-2 text-sm text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Search members..." type="text"/>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-white/5 dark:bg-black/10">
+<th class="px-6 py-3 text-sm font-medium text-black/60 dark:text-white/60 uppercase tracking-wider">Member</th>
+<th class="px-6 py-3 text-sm font-medium text-black/60 dark:text-white/60 uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/10 dark:divide-white/10">
+<tr class="hover:bg-white/5 dark:hover:bg-black/20 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<img alt="Sophia Clark avatar" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqFyUB5mXTNY785pIcM45xOcz0tvAh9iITwwu0eYsjE_sNP8_DyOw6blO7tKT8AzYtqaU6pdWHOZxtV4E3E0xxPpSksINFl3OPh2yhuYFatSmyUGAyk_U4fxuKoJdHlOtuEI9_NuTvumdHVsiMZ_0hei5CktExVy4IOeZnZdfulHitvG_mtKcigbudAnNKDeKafT8kxByp5d3ZccgQ01_ehOxPz8v_Ue07KyIfTxUDTlz9CwOt1Z2OJJys3mMd3lm89cc-U51gOfc"/>
+<span class="font-medium text-black dark:text-white">Sophia Clark</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="px-3 py-1 text-sm font-medium rounded-lg text-red-400 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 transition-colors">Kick</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 dark:hover:bg-black/20 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<img alt="Ethan Bennett avatar" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPY-Lt8sZBOjYLUKGBqvRJl60eORWxUIkmxdYz2nZJHnsfsUam5geCJVr5o5Ujpkn1SeBRqpXBmIrg4AIKhNH0h0N6A2FfGx4TNgigPYC2kjNsZv_dofDItrNr_teVRU9Ax8HaYjlnf-gHj-Gc6bNQp31Mtt133LecXu4Z7epvDkz-YVWJHA1NjttOGw3GQ9lG9bAh66q90tX_4MrR4TWkshjIpRqXYf0-fHVTUrbzpeMqZ-F20-amNWgr4uDfozoJuMwCb5ALqTI"/>
+<span class="font-medium text-black dark:text-white">Ethan Bennett</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="px-3 py-1 text-sm font-medium rounded-lg text-red-400 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 transition-colors">Kick</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 dark:hover:bg-black/20 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<img alt="Olivia Carter avatar" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY0SuHSfnwSxFUM2KWFX3iI1ON54iFYmlrFHh6Ry5_7PUUzQAozZFZ7YK5E6RjqQm3qkBQXYwsshe_UbIny8T0W2sDe9XfVgMxCdZTbl9FOu2JFEIjGq6bmtqHoPcVVXk4ZVStsa5plthCcIWy21xhrhHwYJgzmPHip5VvInsxiOnf4mMPKMgOc0r6_dojpCr9zL1NJ4OuFgRfxKB6nLZZ-k9nJtqriA8FD8355_3zOkLqOHJmn9_JxCrBTM3UQOLiSpjD0WVrqKk"/>
+<span class="font-medium text-black dark:text-white">Olivia Carter</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="px-3 py-1 text-sm font-medium rounded-lg text-red-400 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 transition-colors">Kick</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 dark:hover:bg-black/20 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<img alt="Liam Harper avatar" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNSOwfgrf4LmZ51VINSHVzFyfiOxPXV7d-CxWFlrFbOJRRpSacoygXCHdzTJG-PhNFhMnP28uw3XorfPGrDc0bDsAUnIzHARP9eIsB9TGOsAbYmuY2c869SLRkP0kiLVtuYzRkh3bTMT90WiZos_YAbxMZZOlCUhamz8iA0wQZodrMYu3Mp4xuwDsUxwIL8rb9LueRCKSxiDhOOU2vzwBDNU28heW_1AnPBjNt7sHFB2euH3OaGxhjpDquTbKN9Ns7WEDkRAYGaT4"/>
+<span class="font-medium text-black dark:text-white">Liam Harper</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="px-3 py-1 text-sm font-medium rounded-lg text-red-400 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 transition-colors">Kick</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 dark:hover:bg-black/20 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<img alt="Ava Foster avatar" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvsBBP4wM8HBJUKtTWT5lzrkW4VFilfeRu5p9mfCuPOuDdEsPjrS8XjMfhAAcsAqpLz8wKCwB6sdjL1JHO02lo_jzk3dQVRyOvX079VjTVcBZ0MXxMjUqfq_dQWnTQsEicQovAZfepTyloP6j9OHoxgr2nbAwJDHRnbpBzswTJjYTxpy0WQcT6zJTSrLhSK7G09msh2nV5IPjh5ryk5rqchFtf1l52NSroQvo7fDYDV7ROGa2D6mMja8wgTYlOlKBLkoAcI6HzKzk"/>
+<span class="font-medium text-black dark:text-white">Ava Foster</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="px-3 py-1 text-sm font-medium rounded-lg text-red-400 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 transition-colors">Kick</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

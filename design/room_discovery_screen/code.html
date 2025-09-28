@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3a91e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col min-h-screen">
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-white/10 dark:border-white/10">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<svg class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 4h16v12h-4l-4 4-4-4H4V4zm2 2v8h12V6H6zm1 4h10v2H7v-2z"></path>
+</svg>
+</div>
+<h1 class="text-2xl font-bold text-gray-900 dark:text-white">ChatApp</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">search</span>
+<input class="bg-white/10 dark:bg-white/5 border border-transparent focus:ring-primary focus:border-primary rounded-lg pl-10 pr-4 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 w-48 transition" placeholder="Search" type="text"/>
+</div>
+<button class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-primary/10 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="User Avatar" class="h-10 w-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw-JpFhNRtl88dFtdgMTmWaJV3JP8HNX-292mgaI-U7KoV_WK8ALIvzU8WMAYoKKgkzoumO7paj2BbUdNFGJqf0Q1wY9408disddifQdAAzdKINFWWwzELmO8y_JaCN4J-CnILo1T1ZYDUXmYxCNeeE95r3CArtu_MFtx-fdLUdJTYfe9cbCckwvSShNpYfCEYGGsWppr6Vfz8bA4EH1aNJZcdMCuxvPVT4x-cdAm2QuY-Zbo8f0jvkr_9ynu7Er3XZdrD9kvBdKY"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+<h2 class="text-3xl font-bold text-gray-900 dark:text-white">Chat Rooms</h2>
+<div class="flex items-center gap-4 mt-4 sm:mt-0">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">search</span>
+<input class="bg-background-light dark:bg-background-dark border border-white/10 rounded-lg pl-10 pr-4 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 w-full sm:w-48 transition focus:ring-primary focus:border-primary" placeholder="Search rooms..." type="text"/>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+<span class="material-symbols-outlined">add</span>
+<span class="hidden sm:inline">Create Room</span>
+</button>
+</div>
+</div>
+<div class="border-b border-white/10 mb-6">
+<nav aria-label="Tabs" class="-mb-px flex space-x-8">
+<a class="border-primary text-primary whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#"> All </a>
+<a class="border-transparent text-gray-500 dark:text-gray-400 hover:text-primary hover:border-primary whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#"> Gaming </a>
+<a class="border-transparent text-gray-500 dark:text-gray-400 hover:text-primary hover:border-primary whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#"> Tech </a>
+<a class="border-transparent text-gray-500 dark:text-gray-400 hover:text-primary hover:border-primary whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#"> Music </a>
+<a class="border-transparent text-gray-500 dark:text-gray-400 hover:text-primary hover:border-primary whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#"> Movies </a>
+<a class="border-transparent text-gray-500 dark:text-gray-400 hover:text-primary hover:border-primary whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#"> Sports </a>
+<a class="border-transparent text-gray-500 dark:text-gray-400 hover:text-primary hover:border-primary whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#"> Travel </a>
+</nav>
+</div>
+<div class="space-y-12">
+<div>
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">gamepad</span> Gaming
+                        </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+<div class="group relative overflow-hidden rounded-lg">
+<img alt="League of Legends" class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ6W8ddby-32SY4nneIWTDcdH9nGHqVXaQKKAuuWRbn20M36WeAbZX09VWeQWiQWOnzdRUZr0bAbW-2ezmgIVPyVTGMEDyCE83nc9EF85qWkotnTYr2jSO8IMVNpYt_MI4pS8WChWK5MRGIb5i5Z75Xmf948iRYpNP0mP6avdH46D6iYhErRUun0ewN0w8LJDnJAD2augmfd0evK0-SmLdSVL65_keFwLSn_c7c9U-B4EuKf-DmZHcvqdqmD0lW8uu9lHPcD7EuEU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<h4 class="font-bold text-white text-lg">League of Legends</h4>
+<div class="flex items-center text-sm text-gray-300 gap-4 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-base">circle</span>
+<span>1.2k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">group</span>
+<span>25 members</span>
+</div>
+</div>
+<span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">Trending</span>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg">
+<img alt="Fortnite" class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaec2x_Vh6WzrtditSskHJ81TMi7-eh7wR9AgXJQyJIADau7joEbQ2FhRccPwy73q8KK9lEyR4knPH4icdH5tP73LhfECh4-8D3RzO4wrG6of2Zui0cIxVjljlV-jX2ZaWTMhgJt_zeRAG4hvxOmZVGhnuyMUA_d27I6E1G9zHFWqdCmyKsA9ZsCgxhauR0qGJq8RUhBfmwEyH4dMlm8UkMuyYzDe-mK8QKewc0IhI122M-fJfrvx9zm0DPe2UuKfzgxwGyNrCGjI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<h4 class="font-bold text-white text-lg">Fortnite</h4>
+<div class="flex items-center text-sm text-gray-300 gap-4 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-base">circle</span>
+<span>987</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">group</span>
+<span>18 members</span>
+</div>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg">
+<img alt="Call of Duty" class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjOZw-3lamfgpLzAvAvjJFoJyppn1a8Yx_RlQRlNno8oNfVoLMViPdEG_nPKx6bjwHuFt9EGkLUkJtsYkdaxjMIuPJqncZqvKrafcMjBdhTaSPiLcxtvzRzdfM3jimYYuO7vnzYMYE_qBAQQiaixEuV0ZHefaQjOXVLngp8RfVDS23O4T0SpLc7ep-PDykxVMVLICW1G_-FwJip4RByFW2_2h80u-zOJ10ao_UFHR5hFUHgzoRFvOa9TVpROJ8GWsfWqrd1sxQR1g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<h4 class="font-bold text-white text-lg">Call of Duty</h4>
+<div class="flex items-center text-sm text-gray-300 gap-4 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-base">circle</span>
+<span>850</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">group</span>
+<span>32 members</span>
+</div>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg">
+<img alt="Apex Legends" class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAyOx7iN4JqFlI-vtvg0fC2oesLuj6_4vSGoa2Ab-zVAXFbKsrKeKn55n-qiLw20xlaI85t4MyiutVg15mkGzFq5MALFRYXf6pBJI3rVYbOgGhFMZxFo5LDPuaxya3CMaXQLnvR_cD7sL41Smv3GGktb2TFRTo14y1t-kn3hKFxmKtDfAbMXgTTkdFhhf_froJdT6UiQA7-xm4-sBvSB-Y2bAh6RHZYr9hQlrxWt9e1DUN6GX9JjQzrIfSrOjsBFOCjVCHchdPDmE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<h4 class="font-bold text-white text-lg">Apex Legends</h4>
+<div class="flex items-center text-sm text-gray-300 gap-4 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-base">circle</span>
+<span>734</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">group</span>
+<span>21 members</span>
+</div>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg">
+<img alt="Valorant" class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu5lOBt9USEN0gv_r-BSjfl1YFptR_-caL0750jWTOPZtKfYYqPhJf9guZ01RFAoXqk7VU58TCJbb0ET6KD2dxq0g3jLrXKC_1OOJlSpEgNUhmBptBDb2KMvtPRDcPW8iN-QacISwBE44Gm4OKkNHZ8Gs_qWsNbl6W9O2wgUvLRqbu7t1_BG4CE1W1AJ4QfVf5_wEyYbel7jCjKrbkejG98s8c_91eCI3jL9-79F27SAs2xUya9e0f6UCgVaouFX0Xv5ADSamqTCA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<h4 class="font-bold text-white text-lg">Valorant</h4>
+<div class="flex items-center text-sm text-gray-300 gap-4 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-base">circle</span>
+<span>1.5k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">group</span>
+<span>45 members</span>
+</div>
+</div>
+<span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">Trending</span>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">computer</span> Tech
+                        </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+<div class="group relative overflow-hidden rounded-lg">
+<img alt="AI &amp; Machine Learning" class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYXbPCzC78VWJMOltoh_IWLixjrcz1Vg0ywxpsFgPHExxMAeaC-gNt7CRPlFLpPJUfOWj14iuCdamEwz77nZQEQV-Wf1xXMUYdtk6CIPUkxveC8TuROYZdUoWbPBDlCs-A4ddufelfGyvnSKSPBe4W9eIPKlaXieysaxugjLCd3NIPKvxKlVXthdMB7sWUZM9hz21mxOs4uyF8O_qbgaI-mKnDtGOiBiZquV6_xDGAubqwJ4tCpzK8BIn5mYTnsnGNjc2KGi1uPK0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<h4 class="font-bold text-white text-lg">AI &amp; Machine Learning</h4>
+<div class="flex items-center text-sm text-gray-300 gap-4 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-base">circle</span>
+<span>2.1k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">group</span>
+<span>150 members</span>
+</div>
+</div>
+<span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">Trending</span>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg">
+<img alt="Cybersecurity" class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3XHRbDDG9JDXeHOj0UIgpfFb7FnSiEePDvQn0NxYEaPLiTXkGWt-MGiw7E7oCfgtyyxIlDrQaVh9f-GAtfROEXptqBMiOtrXHTVrS_75w0A82szaAWV7GGPqrN9M2HCqIkvqWLszHLi-QSrwUWWTe0O5KGgbWK4eN3RBh_m7KCTi9ebH_zdXUAwQG8WI9T1CTnr5qr3IE--CKXyTQzfc89cjKszatV7MFUeyoidfear14zL_eH9BvkcGG_GOzsNO-veAMwFCV_2s"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<h4 class="font-bold text-white text-lg">Cybersecurity</h4>
+<div class="flex items-center text-sm text-gray-300 gap-4 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-base">circle</span>
+<span>800</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">group</span>
+<span>75 members</span>
+</div>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg">
+<img alt="Web Development" class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZJtKhGP7znH3E1EBk1elC3QgkuCBEDMC6LxRm6qxZ2oFg0JTh68C8l1JrHn7EAxp_3pRRUq_J7MYXcPof8af5X-DUN3a9m1teoeT7Ndj3wMlAcP0QZsJUZ1Pcdv8mghAD9RmjSpHTI7MLNVmcT-7MsC58b-hTA1DhSuL0MAsG_BV-g38HkMzWGa00HVjjh21qhphP3ZRei8P8FypXWo6BSUNjM2ElENG1TfOBwDl5S4uldWynNGkErmWNfP_XpS_yp1KQPYnE_Rw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<h4 class="font-bold text-white text-lg">Web Development</h4>
+<div class="flex items-center text-sm text-gray-300 gap-4 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-base">circle</span>
+<span>1.8k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">group</span>
+<span>112 members</span>
+</div>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg">
+<img alt="Mobile Development" class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTmyO3pUkDA6DBSCUI25DLMf0uPOQCOTmdBMC-1crOzl0CfxTmlCwe4p-IHvaY3Xz7Z5Mk4fiQY6sIRXlXepCrhExGusaaU9kK-LDhHSFjHovu5FVhvahGXmyh9M0afzp8OGh-8_UGhfoDZMySxNRqjE_gkeEDc55wPb28TFAbFXRKWDg_0Jbj-bZASTo-x46eIg_x_tCc-HtIHvWpo84WcqzLdUyBQXtcDfI5UzpVZh5-ghOirig7FADLAq-djjSQ1ey-gEGu4DI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<h4 class="font-bold text-white text-lg">Mobile Development</h4>
+<div class="flex items-center text-sm text-gray-300 gap-4 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-base">circle</span>
+<span>950</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">group</span>
+<span>90 members</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">music_note</span> Music
+                        </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+<div class="group relative overflow-hidden rounded-lg">
+<img alt="Pop Music" class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQHrfUPBC7uybtIVZUxxzD8nNa_PIRdozGxGpGtz2ZDgKgIq265kHo3Rosv6ilRWau-3DQ9z60ai4dq6yN3UaGTyXKZaWTjGHp6GOYxhOYoOWWrdmHZSKVL5WNMkglzIJOWPLF2PDSQri-f9_FUjjZH-NCr6869bwLI5Ti0EEQK5DCcJlboIRdKwPUamI8hMM-v0X_mNcWbDdLFkABNp-zHJjcHIMrf2MWllUYMTXR76t_Sm0zRRylinwzfRP26TDCFLmIdFEAmWA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<h4 class="font-bold text-white text-lg">Pop Music</h4>
+<div class="flex items-center text-sm text-gray-300 gap-4 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-base">circle</span>
+<span>3.2k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">group</span>
+<span>210 members</span>
+</div>
+</div>
+<span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">Trending</span>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg">
+<img alt="Hip Hop" class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgfYRRQqjcfCIBuAFyjO1CYfegQw_Ow_KjII51xfDwE0M2YL3ImcM-fDXFu0IfYVDXSoRH7TNbGcnlBV6cDoxS7_O2BqEsKM5zfItAbkRpz8JvQVANpCJ-Zzz48YVNoHUFiDx2sRfnZZ5puWahjSAUH6GaLcS0O0DACZY4lf-fBU9DejFjlFKNBtDXNUfY2dbKpfK7elp3fPNKfl_mJNbHShhipqs8VNh7n2DURI0-wzULMio3Srqu3zDEeLyx9a14WpvvrT_j9aU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<h4 class="font-bold text-white text-lg">Hip Hop</h4>
+<div class="flex items-center text-sm text-gray-300 gap-4 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-base">circle</span>
+<span>2.5k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">group</span>
+<span>180 members</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

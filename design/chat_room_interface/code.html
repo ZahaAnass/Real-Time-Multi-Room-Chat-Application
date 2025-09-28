@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChatApp - Real-Time Chat</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3a91e9",
+              "background-light": "#f6f7f8",
+              "background-dark": "#111921",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex h-screen">
+<aside class="w-80 bg-background-light/50 dark:bg-background-dark/50 flex flex-col border-r border-gray-200 dark:border-gray-700">
+<div class="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white text-xl font-bold">C</div>
+<h1 class="text-xl font-bold text-gray-900 dark:text-white">ChatApp</h1>
+</div>
+<div class="flex-1 p-4 space-y-2 overflow-y-auto">
+<h2 class="text-lg font-semibold text-gray-900 dark:text-white px-2">Online Users</h2>
+<div class="space-y-1">
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer">
+<div class="relative">
+<div class="w-12 h-12 bg-center bg-no-repeat bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2fDUZj9PEg30qwZTOrCDLlema4Uuwoxhz2wOrsT_SC58R7OlkgultVepq4HJTsyfjNcUfISj2w47NrZ22jpza7rkY3w1PN0JxizF8vR6oMe-QiMVx4ZPTo4VnW9jmrCWrPTlrzUlWNpcvosufwK_S505-LLgpLaBTr9QfxU7sOj-8FK0QSkoEj5m7MBvwaTIqCOrrJsmuxqyEXXKExKUnrrpaeKfinRZG2rofRzWF9exAO51mHWkxxI0RYAee_-UeLSG3m_OVN3c");'></div>
+<span class="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-green-500 border-2 border-background-light dark:border-background-dark"></span>
+</div>
+<div class="flex-1">
+<p class="font-medium text-gray-900 dark:text-white">Ethan</p>
+<p class="text-sm text-green-500">Online</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer">
+<div class="relative">
+<div class="w-12 h-12 bg-center bg-no-repeat bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAyj3loZ67yAA7OdS2GwH4Ty5OCsFzL8YKRcPSGZ7vpSfxbR3hBUoGF0_xXokWNoUCYm15iHrOga22mIEePv4T7UkPjwICSw2w-0VekvRLNM6P8-g0HKa5p_iLfbvNw8zOT_LHGEb0RuKZfEtCv7QMYGkURPKEU_ArPXbxvBoeUS4W0xZ4qP8jzzhlHnHTa23X36324LgaJPfISNMXZaPH9wkcoSPf_Rg1zX-bTZVm9o10EFaK5XsN5ggfeqL6S9TzvMrc9Tq14nW4");'></div>
+<span class="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-yellow-500 border-2 border-background-light dark:border-background-dark"></span>
+</div>
+<div>
+<p class="font-medium text-gray-900 dark:text-white">Olivia</p>
+<p class="text-sm text-yellow-500">Away</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer">
+<div class="relative">
+<div class="w-12 h-12 bg-center bg-no-repeat bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBs4DaXz1nfbTvtyl-BEf-yawzd4VM0ehS2KQERUfPfdE_Zx_aQl9Y59OXVXnUMHGdt0-bxVt6X1nNmunX7tujL7i9e06ia8sjiLQk30pybcMQHM_nXL0EDo1SBiT4S8-sdnNMm_VclTnMxLuN_lZFMIv32Md34gPkL7nYhp0sqmYQbzKeFV6izNaSIp6rAPNqsmQUNIonybRGkLATEQY-xwUoqfw_HHwedhllqrHKe5ZdnJcFnrw0w1WEaPLKNMz9E8s3bH6PcvDY");'></div>
+<span class="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-red-500 border-2 border-background-light dark:border-background-dark"></span>
+</div>
+<div>
+<p class="font-medium text-gray-900 dark:text-white">Liam</p>
+<p class="text-sm text-red-500">Busy</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer">
+<div class="relative">
+<div class="w-12 h-12 bg-center bg-no-repeat bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAeznGRyrTbhOwDtOFasyXiBY8aKfjx2JfImqPQj77bdT2A1vZkHWG5GCmIgaa_-z9FBVw9ba9CteGL_cxGP_c-qJLsnLQBISuMeGfE0mKOFrmVVbsuac0J2SRr5cXzRNVOxmTlcbUWsoWSeIWlItaBVs83BQmdhhx76tEH_X7jE7NgEEO82JR9gqfICaB2VQVNON7j4FYUjebGrlIxnZXnvpBi6OD9JIP4d7VctJoGDVftBRd4C3KRlNh0-QQpJ7ACpJS_V5PgZPE");'></div>
+<span class="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-green-500 border-2 border-background-light dark:border-background-dark"></span>
+</div>
+<div>
+<p class="font-medium text-gray-900 dark:text-white">Sophia</p>
+<p class="text-sm text-green-500">Online</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer">
+<div class="relative">
+<div class="w-12 h-12 bg-center bg-no-repeat bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCai-D8tKaVUFgQ9_I45dNiAajsvkcrZti9m3UV7PazCcv_y5WDFrOuAST9DVnZS49AI_8ORV0R9ipgGLOFDWItzTVVP3I26jtl1nOO6SB8DXKs7jHcokjk3quIfUhNEUMjuEef5XHnaiwGBm7MirGAnG3Qx69XG8LSmEUCOs7m3nZSMEWegFmwBhUJBRhviYKpdDwR5ScgUf8MCK_WWwwk5vE57pa7I9I0dTvmtyI1i_NDyalRxjQO_C-u1s3FXJsPSGQAd1JWOTE");'></div>
+<span class="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-green-500 border-2 border-background-light dark:border-background-dark"></span>
+</div>
+<div>
+<p class="font-medium text-gray-900 dark:text-white">Noah</p>
+<p class="text-sm text-green-500">Online</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-center bg-no-repeat bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBe9KdeM46T8MvAjNK0ucWRM-EXRRLamzM9wJ8N7q1vjtAiNINeOLBS6Hj_fpSPzX6Z2aaALqAjxzJRrBqtNriQhhyOKVbUe15XpWHbnaOVKAb6E7qNZtO2tgkgtGfk6niq4QfCVxkJE3gB7mEeTYOJyioH71XG311lTJcV8qx23spyqby9g2ekJ_o17Rb6UiCxkzl8pMY5ZAwoLZhqBPP0GAqfBabjSDxw4aV_8MaUfDeEfr6Pmsyz_o0G-ITWyvXQdHF8p4FpKgU");'></div>
+<p class="font-semibold text-gray-900 dark:text-white">You</p>
+</div>
+<button class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</aside>
+<main class="flex-1 flex flex-col">
+<header class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+<div>
+<h2 class="text-xl font-bold text-gray-900 dark:text-white">General Chat</h2>
+<p class="text-sm text-gray-500 dark:text-gray-400">Welcome to the General Chat room!</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<div class="flex-1 p-6 space-y-6 overflow-y-auto">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 bg-center bg-no-repeat bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACA6cW5w4aBo_M1isJPFfdNDruOdhkIFtys3k0--ZSytKOyFUVh66K3HNdZJ5XVK_O2cpm8RBSi_dtft-uOFeSw4vWIwLZYLdvOUzb3WuiE8mhYDUZcyQ3Vl6r5BL1gA828CsHvTgmTcZZdzJ8p_u3LfGPsMDZgptY98jAMiGivsEAAnTu1b6Eyw9CmUWE-GgKssM2ECeUGr0BblB_UTu2fcx_7EtzfX2vsdWhZRJrwBtPLrFqh5PAzmeztF2ooG3Zi8WGP0lmEIQ");'></div>
+<div>
+<div class="flex items-baseline gap-2">
+<p class="font-semibold text-gray-900 dark:text-white">Sophia</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">10:30 AM</p>
+</div>
+<div class="mt-1 p-3 rounded-lg rounded-tl-none bg-gray-200 dark:bg-gray-700 max-w-md">
+<p>Hey everyone! Excited to be here and chat with you all.</p>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-3 justify-end">
+<div class="text-right">
+<div class="flex items-baseline gap-2 justify-end">
+<p class="font-semibold text-gray-900 dark:text-white">Ethan</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">10:31 AM</p>
+</div>
+<div class="mt-1 p-3 rounded-lg rounded-tr-none bg-primary text-white max-w-md">
+<p>Welcome, Sophia! Glad to have you. What are your interests?</p>
+</div>
+</div>
+<div class="w-10 h-10 bg-center bg-no-repeat bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDKcrLAGxlxIiNDzbstCHbZ5sDYWpgDNr3dQSO24glvOHenSXXTcbaDIFrWSJV5QwFNNz2YLrjuxKF4vVA4wqBmg2hh2dzRnZ7aj1wHiXGXUqyx5oEjr2ICA95FNbkBV7e_e0wDYcZLzKdpfoSRNzysCplzsb11MmRBweQ8nPGsMFVlIMs41geL6JbjdpjkS4nRS1J0l_D2DKxMKrdo4A4wfMyjWYwzM1H473H67lGCowzEgXg1uyPx2psrN6cU_P9owXajNXFyTbU");'></div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 bg-center bg-no-repeat bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCsvJH3iwJ6uKGIMpF6BmPqStTsbOKrqkmwhuqAxyz7aoOk7phdQUkA8oxnvxLG2mcmUEQQ3IFc6-pA1RF3NRQIAIHz2ABOeau9MAre6SRdYKGHLzu6CvJT1sZ5IIEpOxgaCjPT84wiv-rFKNsAadbYCgojCIElPvBlXGCO2Ara-ZWH78qd4o9oCCXwi5TRhZLbbrK_NbdCn_2ys0KaaeWb0cIM6pBPEj0wXcZhtJEVHF_Ika99AOjCClGkm29Jx38x8R7xwVpWxRA");'></div>
+<div>
+<div class="flex items-baseline gap-2">
+<p class="font-semibold text-gray-900 dark:text-white">Sophia</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">10:32 AM</p>
+</div>
+<div class="mt-1 p-3 rounded-lg rounded-tl-none bg-gray-200 dark:bg-gray-700 max-w-md">
+<p>I'm into photography, hiking, and reading. How about you, Ethan?</p>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 bg-center bg-no-repeat bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDKcrLAGxlxIiNDzbstCHbZ5sDYWpgDNr3dQSO24glvOHenSXXTcbaDIFrWSJV5QwFNNz2YLrjuxKF4vVA4wqBmg2hh2dzRnZ7aj1wHiXGXUqyx5oEjr2ICA95FNbkBV7e_e0wDYcZLzKdpfoSRNzysCplzsb11MmRBweQ8nPGsMFVlIMs41geL6JbjdpjkS4nRS1J0l_D2DKxMKrdo4A4wfMyjWYwzM1H473H67lGCowzEgXg1uyPx2psrN6cU_P9owXajNXFyTbU");'></div>
+<div>
+<div class="mt-1 p-3 rounded-lg rounded-tl-none bg-gray-200 dark:bg-gray-700 max-w-md">
+<div class="flex items-center gap-1">
+<span class="block w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full animate-pulse [animation-delay:-0.3s]"></span>
+<span class="block w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full animate-pulse [animation-delay:-0.15s]"></span>
+<span class="block w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full animate-pulse"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-gray-200 dark:border-gray-700">
+<div class="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 rounded-lg p-2">
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400" placeholder="Type your message..." type="text"/>
+<button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+<button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<button class="px-4 py-2 rounded-lg bg-primary text-white font-semibold disabled:bg-primary/50" disabled="">Send</button>
+</div>
+</div>
+</main>
+</div>
+
+
+</body></html>

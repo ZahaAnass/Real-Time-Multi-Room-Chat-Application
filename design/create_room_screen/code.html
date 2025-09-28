@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create New Chat Room</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#3a91e9",
+            "background-light": "#f6f7f8",
+            "background-dark": "#111921",
+          },
+          fontFamily: {
+            "display": ["Inter"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col min-h-screen">
+<header class="border-b border-white/10 dark:border-white/10">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center space-x-4">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-3xl">chat_bubble</span>
+</div>
+<h1 class="text-xl font-bold text-black dark:text-white">ChatApp</h1>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-sm font-medium text-black/80 dark:text-white/80 hover:text-primary dark:hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-black/80 dark:text-white/80 hover:text-primary dark:hover:text-primary transition-colors" href="#">Explore</a>
+<a class="text-sm font-medium text-black/80 dark:text-white/80 hover:text-primary dark:hover:text-primary transition-colors" href="#">Notifications</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="bg-primary/20 dark:bg-primary/30 p-2 rounded-full text-primary hover:bg-primary/30 dark:hover:bg-primary/40 transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDhDYyToC6m0-ZJZ_nFn2SXIUFMucjUc3DoxteTNLjRtUDqk-mv3mN4YIE8KsLgkmZ11C6rsasQZL7n8c9YQz232XLqDElKcZpVUdY-w1k5OmCPvt-KNy2fOaL3b5dN1_3zT2tEuQpMaIO-XCuhQgX23uWZMbfeRxZ6bjY3OG6ag-Y2RK6ZWwQI8wYtvznA0lzpMRnZI1g3vgmZO5T76QYHbm9wX87xiiSo_nPs6niX0ygo8KMeNIBiQyUyqvWjXzVJO88NaHdJB1E");'></div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+<div class="w-full max-w-lg space-y-8">
+<div class="text-center">
+<h2 class="text-3xl font-bold tracking-tight text-black dark:text-white">Create a New Chat Room</h2>
+<p class="mt-2 text-sm text-black/60 dark:text-white/60">Fill in the details below to start a new conversation.</p>
+</div>
+<div class="bg-white/5 dark:bg-black/20 p-8 rounded-xl shadow-lg space-y-6">
+<div class="space-y-2">
+<label class="block text-sm font-medium text-black/80 dark:text-white/80" for="room-name">Room Name</label>
+<input class="w-full bg-white/10 dark:bg-black/30 border border-white/20 dark:border-black/40 text-black dark:text-white placeholder-black/50 dark:placeholder-white/50 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors" id="room-name" name="room-name" placeholder="e.g., #general" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-medium text-black/80 dark:text-white/80" for="description">Description</label>
+<textarea class="w-full bg-white/10 dark:bg-black/30 border border-white/20 dark:border-black/40 text-black dark:text-white placeholder-black/50 dark:placeholder-white/50 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-none" id="description" name="description" placeholder="A brief description of the room's purpose." rows="4"></textarea>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-medium text-black/80 dark:text-white/80" for="category">Category</label>
+<select class="w-full bg-white/10 dark:bg-black/30 border border-white/20 dark:border-black/40 text-black dark:text-white rounded-lg px-4 py-3 appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors bg-no-repeat bg-right pr-8" id="category" name="category" style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23ffffffb3%27%3e%3cpath d=%27M8 10.75a.75.75 0 0 1-.53-.22l-3-3a.75.75 0 0 1 1.06-1.06L8 8.94l2.47-2.47a.75.75 0 1 1 1.06 1.06l-3 3a.75.75 0 0 1-.53.22z%27/%3e%3c/svg%3e');">
+<option class="bg-background-light dark:bg-background-dark text-black dark:text-white">General</option>
+<option class="bg-background-light dark:bg-background-dark text-black dark:text-white">Development</option>
+<option class="bg-background-light dark:bg-background-dark text-black dark:text-white">Design</option>
+<option class="bg-background-light dark:bg-background-dark text-black dark:text-white">Random</option>
+</select>
+</div>
+<div>
+<button class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background-light dark:focus:ring-offset-background-dark focus:ring-primary transition-all duration-300" type="submit">
+              Create Room
+            </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

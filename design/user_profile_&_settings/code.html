@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChatApp Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3a91e9",
+              "background-light": "#f6f7f8",
+              "background-dark": "#111921",
+            },
+            fontFamily: {
+              display: ["Inter"],
+            },
+            borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+          },
+        },
+      };
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex min-h-screen">
+<aside class="w-64 bg-background-light/50 dark:bg-background-dark/50 p-4 flex flex-col shrink-0">
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBcAg47U8xAUSFrho-erhvA5vFGI5vkzQwpk6u_q0bKjPNp_Lv3YF9Yo12vKyvBbcWsWt63WGk6KsyhPrLbvgaxsTBkRFYa_puBbVr3iJ_vrWBN0N7Fmu7RWVuBxNOcJuqM4csWnY_W5QAWwcjxQy5U63QyNgFDOubQHmymIl04kNQNgGh8ba_S6NxqfGjkGOyOPeCm66f9Swoxzb-z6CJoIvRzAmDOBUtfBs-j9jclEhw0gchGDieAcHPw01C4EZyhdR6ejazUaOM");'></div>
+<h1 class="text-lg font-bold text-gray-900 dark:text-white">ChatApp</h1>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary font-semibold" href="#">
+<span class="material-symbols-outlined">settings</span>
+            Preferences
+          </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700/50" href="#">
+<span class="material-symbols-outlined">home</span>
+            Home
+          </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700/50" href="#">
+<span class="material-symbols-outlined">tag</span>
+            Threads
+          </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700/50" href="#">
+<span class="material-symbols-outlined">inbox</span>
+            Mentions &amp; reactions
+          </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700/50" href="#">
+<span class="material-symbols-outlined">draft</span>
+            Drafts
+          </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700/50" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+            All DMs
+          </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700/50" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+            Files
+          </a>
+</nav>
+</aside>
+<main class="flex-1 p-8">
+<div class="max-w-4xl mx-auto">
+<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8">Preferences</h1>
+<section class="mb-12">
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">Profile</h2>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm text-gray-500 dark:text-gray-400">Username</p>
+<p class="text-lg text-gray-900 dark:text-white">Ethan Harper</p>
+</div>
+<button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-300 dark:hover:bg-gray-600">Edit</button>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm text-gray-500 dark:text-gray-400">Email</p>
+<p class="text-lg text-gray-900 dark:text-white">ethan.harper@email.com</p>
+</div>
+<button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-300 dark:hover:bg-gray-600">Edit</button>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm text-gray-500 dark:text-gray-400">Bio</p>
+<p class="text-lg text-gray-900 dark:text-white">Software Engineer at Acme Co</p>
+</div>
+<button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-300 dark:hover:bg-gray-600">Edit</button>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-lg text-gray-900 dark:text-white">Change Avatar</p>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90">Upload Image</button>
+</div>
+</div>
+</section>
+<section class="mb-12">
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">Status</h2>
+<div class="flex flex-wrap gap-4">
+<label class="flex items-center gap-2 cursor-pointer p-3 rounded-lg border-2 border-transparent has-[:checked]:border-primary has-[:checked]:bg-primary/10 dark:has-[:checked]:bg-primary/20 bg-gray-100 dark:bg-gray-800/50">
+<input checked="" class="form-radio text-primary focus:ring-primary" name="status" type="radio"/>
+<span class="text-gray-900 dark:text-white">Online</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer p-3 rounded-lg border-2 border-transparent has-[:checked]:border-primary has-[:checked]:bg-primary/10 dark:has-[:checked]:bg-primary/20 bg-gray-100 dark:bg-gray-800/50">
+<input class="form-radio text-primary focus:ring-primary" name="status" type="radio"/>
+<span class="text-gray-900 dark:text-white">Away</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer p-3 rounded-lg border-2 border-transparent has-[:checked]:border-primary has-[:checked]:bg-primary/10 dark:has-[:checked]:bg-primary/20 bg-gray-100 dark:bg-gray-800/50">
+<input class="form-radio text-primary focus:ring-primary" name="status" type="radio"/>
+<span class="text-gray-900 dark:text-white">Busy</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer p-3 rounded-lg border-2 border-transparent has-[:checked]:border-primary has-[:checked]:bg-primary/10 dark:has-[:checked]:bg-primary/20 bg-gray-100 dark:bg-gray-800/50">
+<input class="form-radio text-primary focus:ring-primary" name="status" type="radio"/>
+<span class="text-gray-900 dark:text-white">Offline</span>
+</label>
+</div>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+<section>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">Appearance</h2>
+<div class="flex items-center justify-between bg-gray-100 dark:bg-gray-800/50 p-4 rounded-lg">
+<p class="text-lg text-gray-900 dark:text-white">Dark Mode</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-300 dark:bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</section>
+<section>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">Notifications</h2>
+<div class="flex items-center justify-between bg-gray-100 dark:bg-gray-800/50 p-4 rounded-lg">
+<p class="text-lg text-gray-900 dark:text-white">Enable Notifications</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-300 dark:bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</section>
+<section>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">Privacy</h2>
+<div class="flex items-center justify-between bg-gray-100 dark:bg-gray-800/50 p-4 rounded-lg">
+<p class="text-lg text-gray-900 dark:text-white">Private Profile</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-300 dark:bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</section>
+<section>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">Account</h2>
+<button class="w-full flex items-center justify-between bg-gray-100 dark:bg-gray-800/50 p-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700/50">
+<p class="text-lg text-red-600 dark:text-red-500 font-semibold">Sign Out</p>
+<span class="material-symbols-outlined text-red-600 dark:text-red-500">logout</span>
+</button>
+</section>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
