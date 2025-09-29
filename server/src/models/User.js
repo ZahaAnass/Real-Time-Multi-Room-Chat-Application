@@ -1,14 +1,16 @@
 const mongoose = require("mongoose")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
+const date = new Date()
+const today = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
 
 const UserSchema = new mongoose.Schema({
-    name: {
+    username: {
         type: String,
-        required: [true, "Please provide name"],
+        required: [true, "Please provide username"],
         trim: true,
-        maxlength: [50, "Name cannot be more than 50 characters"],
-        minlength: [3, "Name must be at least 3 characters"],
+        maxlength: [50, "Username cannot be more than 50 characters"],
+        minlength: [3, "Username must be at least 3 characters"],
     },
     email: {
         type: String,
@@ -19,30 +21,34 @@ const UserSchema = new mongoose.Schema({
         ],
         unique: true,
     },
-    password: {
+    passwordHash: {
         type: String,
         required: [true, "Please provide password"],
         trim: true,
-        minlength: [6, "Password must be at least 6 characters"],
-    }
+        minlength: [8, "Password must be at least 8 characters"],
+    },
+    createdAt: {
+        type: Date,
+        default: today,
+    },
 })
 
 UserSchema.pre("save", async function (next) {
     const salt = await bcrypt.genSalt(10)
-    this.password = await bcrypt.hash(this.password, salt)
+    this.passwordHash = await bcrypt.hash(this.passwordHash, salt)
     next()
 })
 
 UserSchema.methods.createJWT = function () {
     return jwt.sign(
-        { userId: this._id, name: this.name },
+        { userId: this._id, username: this.username },
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_LIFETIME }
     )
 }
 
 UserSchema.methods.comparePassword = async function (password) {
-    const isMatch = await bcrypt.compare(password, this.password)
+    const isMatch = await bcrypt.compare(password, this.passwordHash)
     return isMatch
 }
 
