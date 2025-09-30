@@ -1,6 +1,5 @@
 const mongoose = require("mongoose")
 const date = new Date()
-const today = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
 
 const MessageSchema = new mongoose.Schema({
     roomId: {
@@ -17,8 +16,16 @@ const MessageSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please provide name"],
         trim: true,
-        maxlength: [100, "Name cannot be more than 100 characters"],
-        minlength: [3, "Name must be at least 3 characters"],
+        maxlength: [200, "Name cannot be more than 200 characters"],
+        minlength: [1, "Name must be at least 1 characters"],
+    },
+    isDeletedMessage: {
+        type: Boolean,
+        default: false,
+    },
+    isModifiedMessage: {
+        type: Boolean,
+        default: false,
     },
 }, {
     timestamps: true,
