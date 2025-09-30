@@ -59,10 +59,10 @@ const deleteMessage = async (req, res) => {
         return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Message already deleted" })
     }
 
-
     message.content = "This message has been deleted"
     message.isDeletedMessage = true
     await message.save()
+
     res.status(StatusCodes.OK).json({ msg: "Message deleted" })
 }
 
