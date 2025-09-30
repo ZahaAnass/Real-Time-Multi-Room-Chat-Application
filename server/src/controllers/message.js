@@ -51,9 +51,14 @@ const deleteMessage = async (req, res) => {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "Message not found" })
     }
 
+    if (message.senderId.toString() !== req.user.userId) {
+        return res.status(StatusCodes.UNAUTHORIZED).json({ msg: "You are not authorized to delete this message" })
+    }
+
     if (message.isDeletedMessage) {
         return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Message already deleted" })
     }
+
 
     message.content = "This message has been deleted"
     message.isDeletedMessage = true
