@@ -26,11 +26,9 @@ const UserSchema = new mongoose.Schema({
         required: [true, "Please provide password"],
         trim: true,
         minlength: [8, "Password must be at least 8 characters"],
-    },
-    createdAt: {
-        type: Date,
-        default: today,
-    },
+    }
+}, {
+    timestamps: true
 })
 
 UserSchema.pre("save", async function (next) {
