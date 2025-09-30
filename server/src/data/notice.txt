@@ -1,0 +1,6 @@
+// ========================================
+// USERS COLLECTION (15 records)
+// ========================================
+// Note: passwordHash values are bcrypt hashes of "Password123!"
+
+

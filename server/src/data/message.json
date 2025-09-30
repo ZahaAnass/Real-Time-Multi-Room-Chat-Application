@@ -1,0 +1,153 @@
+
+[
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f01"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e01"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d01"},
+    "content": "Hey everyone! Welcome to Tech Enthusiasts!",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-15T11:05:00.000Z"},
+    "updatedAt": {"$date": "2024-09-15T11:05:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f02"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e01"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d02"},
+    "content": "Thanks for creating this group! Has anyone tried the new AI tools?",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-15T11:10:00.000Z"},
+    "updatedAt": {"$date": "2024-09-15T11:10:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f03"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e02"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d02"},
+    "content": "Morning workout complete! 5km run today.",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-16T15:15:00.000Z"},
+    "updatedAt": {"$date": "2024-09-16T15:15:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f04"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e03"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d03"},
+    "content": "This month we're reading 'The Great Gatsby'. Who's in?",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-17T10:30:00.000Z"},
+    "updatedAt": {"$date": "2024-09-17T10:30:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f05"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e04"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d04"},
+    "content": "Anyone up for a raid tonight at 8pm?",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-18T12:30:00.000Z"},
+    "updatedAt": {"$date": "2024-09-18T12:30:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f06"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e04"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d05"},
+    "content": "Count me in! I'll bring my best gear.",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-18T12:35:00.000Z"},
+    "updatedAt": {"$date": "2024-09-18T12:35:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f07"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e05"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d05"},
+    "content": "Just captured an amazing sunset! Check out my portfolio.",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-19T17:30:00.000Z"},
+    "updatedAt": {"$date": "2024-09-19T17:30:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f08"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e06"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d06"},
+    "content": "Anyone have a good recipe for chocolate chip cookies?",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-20T09:00:00.000Z"},
+    "updatedAt": {"$date": "2024-09-20T09:00:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f09"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e07"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d07"},
+    "content": "Just booked my tickets to Bali! So excited!",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-21T14:45:00.000Z"},
+    "updatedAt": {"$date": "2024-09-21T14:45:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f10"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e08"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d08"},
+    "content": "Working on a new beat. What do you guys think about lo-fi hip hop?",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-22T11:30:00.000Z"},
+    "updatedAt": {"$date": "2024-09-22T11:30:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f11"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e09"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d09"},
+    "content": "I have an idea for a sustainable fashion startup. Interested in hearing thoughts?",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-23T16:20:00.000Z"},
+    "updatedAt": {"$date": "2024-09-23T16:20:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f12"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e10"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d10"},
+    "content": "Just watched the new sci-fi thriller. Mind blown! No spoilers though.",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-24T10:30:00.000Z"},
+    "updatedAt": {"$date": "2024-09-24T10:30:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f13"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e11"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d11"},
+    "content": "Looking for someone to practice Spanish with. Any native speakers here?",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-25T13:30:00.000Z"},
+    "updatedAt": {"$date": "2024-09-25T13:30:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f14"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e12"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d12"},
+    "content": "My tomatoes are finally ready to harvest! Best season ever.",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-26T15:45:00.000Z"},
+    "updatedAt": {"$date": "2024-09-26T15:45:00.000Z"}
+  },
+  {
+    "_id": {"$oid": "652c3d4e5f6a7b8c9d0e1f15"},
+    "roomId": {"$oid": "651b2c3d4e5f6a7b8c9d0e13"},
+    "senderId": {"$oid": "650a1b2c3d4e5f6a7b8c9d13"},
+    "content": "Bitcoin just hit a new milestone. What are your predictions for next month?",
+    "isDeletedMessage": false,
+    "isModifiedMessage": false,
+    "createdAt": {"$date": "2024-09-27T12:30:00.000Z"},
+    "updatedAt": {"$date": "2024-09-27T12:30:00.000Z"}
+  }
+]
