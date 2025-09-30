@@ -2,26 +2,62 @@ const Message = require("../models/Message")
 const { StatusCodes } = require("http-status-codes")
 
 const sendMessage = async (req, res) => {
-    const message = await Message.create(req.body)
+    const { content, roomId, senderId } = req.body
+
+    if (!content || !roomId || !senderId) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Please provide content, room id and sender id" })
+    }
+
+    const message = await Message.create({ content, roomId, senderId })
+
+    if (!message) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Message not created" })
+    }
+
     res.status(StatusCodes.CREATED).json({ message })
 }
 
 const editMessage = async (req, res) => {
-    const message = await Message.findById(req.params.id)
+    const { content } = req.body
+
+    if (!content) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Please provide content" })
+    }
+
+    const { id } = req.params
+
+    if (!id) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Please provide message id" })
+    }
+
+    const message = await Message.findById(id)
+
     if (!message) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "Message not found" })
     }
-    message.content = req.body.content
+
+    message.content = content
+    message.isModifiedMessage = true
     await message.save()
+
     res.status(StatusCodes.OK).json({ message })
 }
 
 const deleteMessage = async (req, res) => {
-    const message = await Message.findById(req.params.id)
+    const { id } = req.params
+    const message = await Message.findById(id)
+
     if (!message) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "Message not found" })
     }
-    await message.remove()
+
+    if (message.isDeletedMessage) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Message already deleted" })
+    }
+
+    message.content = "This message has been deleted"
+    message.isDeletedMessage = true
+    await message.save()
     res.status(StatusCodes.OK).json({ msg: "Message deleted" })
 }
 
