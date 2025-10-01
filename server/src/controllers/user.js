@@ -62,18 +62,22 @@ const updateUserInfo = async (req, res) => {
 }
 
 const updatePassword = async (req, res) => {
-    const { password } = req.body
+    const { lastPassword, newPassword } = req.body
     const user = await User.findById(req.user.userId)
 
     if (!user) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
     }
 
-    if (!password || password.trim().length < 8 ) {
+    if (!lastPassword || !newPassword || lastPassword.trim().length < 8 || newPassword.trim().length < 8 ) {
         return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Please provide password with at least 8 characters" })
     }
 
-    user.passwordHash = password.trim()
+    if(!await user.comparePassword(lastPassword)){
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "The Last Password is incorrect" })
+    }
+
+    user.passwordHash = newPassword.trim()
     user.updatedAt = new Date()
 
     try{
