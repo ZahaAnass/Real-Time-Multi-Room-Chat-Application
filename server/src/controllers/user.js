@@ -1,4 +1,5 @@
 const User = require("../models/User")
+const Room = require("../models/Room")
 const { StatusCodes } = require("http-status-codes")
 
 const getUserInfo = async (req, res) => {
@@ -89,19 +90,59 @@ const updatePassword = async (req, res) => {
     res.status(StatusCodes.OK).json({ user })
 }
 
-const leaveRoom = async (req, res) => {
+const sendJoinRequest = async (req, res) => {
+    const { roomId } = req.body
+
     const user = await User.findById(req.user.userId)
     if (!user) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
     }
+
+    const room = await Room.findById(roomId)
+    if (!room) {
+        return res.status(StatusCodes.NOT_FOUND).json({ msg: "Room not found" })
+    }
+
+    if(room.members.includes(user._id)){
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "You are already in this room" })
+    }
+
+    room.requests.push(user._id)
+
+    try{
+        await room.save()
+    }catch(err){
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Failed to send join request" })
+    }
+
     res.status(StatusCodes.OK).json({ user })
 }
 
-const sendJoinRequest = async (req, res) => {
+const leaveRoom = async (req, res) => {
+    const { roomId } = req.body
+
     const user = await User.findById(req.user.userId)
     if (!user) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
     }
+
+    const room = await Room.findById(roomId)
+    if (!room) {
+        return res.status(StatusCodes.NOT_FOUND).json({ msg: "Room not found" })
+    }
+
+    if(!room.members.includes(user._id)){
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "You are not in this room" })
+    }
+
+    room.members.remove(user._id)
+
+    try{
+        await room.save()
+    }catch(err){
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Failed to leave room" })
+    }
+
     res.status(StatusCodes.OK).json({ user })
 }
 
