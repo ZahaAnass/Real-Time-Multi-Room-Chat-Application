@@ -2,20 +2,86 @@ const User = require("../models/User")
 const { StatusCodes } = require("http-status-codes")
 
 const getUserInfo = async (req, res) => {
-    const user = await User.findById(req.user.userId)
+    const id = req.user.userId
+
+    const user = await User.findById(id)
 
     if (!user) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
+    }
+
+    res.status(StatusCodes.OK).json({ user: { _id: user._id, username: user.username, email: user.email } })
+}
+
+const updateUserInfo = async (req, res) => {
+    const { username, email } = req.body
+    if (!username || !email || username.trim().length < 3 || email.trim().length < 3 ) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Please provide username and email" })
+    }
+
+    const user = await User.findById(req.user.userId)
+    if (!user) {
+        return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
+    }
+
+    if(user.email != email){
+        const checkEmail = await User.findOne({ email: email.trim().toLowerCase() })
+        if (checkEmail) {
+            return res.status(StatusCodes.BAD_REQUEST).json({ msg: "User already exists" })
+        }else{
+            if(!email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+                return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Please provide valid email" })
+            }else{
+                user.email = email.trim().toLowerCase()
+            }
+        }
+    }
+
+    if(user.username != username){
+        const checkUsername = await User.findOne({ username: username.trim().toLowerCase() })
+        if (checkUsername) {
+            return res.status(StatusCodes.BAD_REQUEST).json({ msg: "User already exists" })
+        }else{
+            if(username.trim().length < 3){
+                return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Username must be at least 3 characters" })
+            }else{
+                user.username = username.trim().toLowerCase()
+            }
+        }
+    }
+
+    user.updatedAt = new Date()
+
+    try{
+        await user.save()
+    }catch(err){
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Failed to update user" })
     }
 
     res.status(StatusCodes.OK).json({ user })
 }
 
-const joinRoom = async (req, res) => {
+const updatePassword = async (req, res) => {
+    const { password } = req.body
     const user = await User.findById(req.user.userId)
+
     if (!user) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
     }
+
+    if (!password || password.trim().length < 8 ) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Please provide password with at least 8 characters" })
+    }
+
+    user.passwordHash = password.trim()
+    user.updatedAt = new Date()
+
+    try{
+        await user.save()
+    }catch(err){
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Failed to update password" })
+    }
+
     res.status(StatusCodes.OK).json({ user })
 }
 
@@ -35,17 +101,9 @@ const sendJoinRequest = async (req, res) => {
     res.status(StatusCodes.OK).json({ user })
 }
 
-const updateUserInfo = async (req, res) => {
-    const user = await User.findById(req.user.userId)
-    if (!user) {
-        return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
-    }
-    res.status(StatusCodes.OK).json({ user })
-}
-
 module.exports = {
     getUserInfo,
-    joinRoom,
+    updatePassword,
     leaveRoom,
     sendJoinRequest,
     updateUserInfo,
