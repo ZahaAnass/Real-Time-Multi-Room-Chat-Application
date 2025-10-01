@@ -38,7 +38,13 @@ const editMessage = async (req, res) => {
 
     message.content = content
     message.isModifiedMessage = true
-    await message.save()
+    message.updatedAt = new Date()
+
+    try{
+        await message.save()
+    }catch(err){
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Failed to edit message" })
+    }
 
     res.status(StatusCodes.OK).json({ message })
 }
@@ -61,7 +67,12 @@ const deleteMessage = async (req, res) => {
 
     message.content = "This message has been deleted"
     message.isDeletedMessage = true
-    await message.save()
+
+    try{
+        await message.save()
+    }catch(err){
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Failed to delete message" })
+    }
 
     res.status(StatusCodes.OK).json({ msg: "Message deleted" })
 }
