@@ -46,70 +46,163 @@ const deleteRoom = async (req, res) => {
     }
 }
 
-const searchRoom = async (req, res) => {
-    const room = await Room.findOne({ name: req.query.name })
-    if (!room) {
-        return res.status(StatusCodes.NOT_FOUND).json({ msg: "Room not found" })
-    }
-    res.status(StatusCodes.OK).json({ room })
-}
+// ! TO TEST
 
 const approveJoinRequest = async (req, res) => {
-    const room = await Room.findById(req.params.id)
+    const { roomId, userId } = req.params
+    const room = await Room.findById(roomId)
+
     if (!room) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "Room not found" })
     }
-    room.requests = room.requests.filter((request) => request !== req.user.userId)
-    room.members.push(req.user.userId)
-    await room.save()
+
+    const user = await User.findById(userId)
+    if (!user) {
+        return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
+    }
+
+    if (room.adminId !== req.user.userId) {
+        return res.status(StatusCodes.UNAUTHORIZED).json({ msg: "You are not authorized to approve join requests" })
+    }
+
+    if (!room.requests.includes(userId)) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "User is not in the requests list" })
+    }
+
+    room.requests = room.requests.filter((request) => request !== userId)
+    room.members.push(userId)
+
+    try{
+        await room.save()
+    } catch (error) {
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Room not updated" })
+    }
+
     res.status(StatusCodes.OK).json({ room })
 }
 
 const rejectJoinRequest = async (req, res) => {
-    const room = await Room.findById(req.params.id)
+    const { roomId, userId } = req.params
+    const room = await Room.findById(roomId)
+
     if (!room) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "Room not found" })
     }
-    room.requests = room.requests.filter((request) => request !== req.user.userId)
-    await room.save()
+
+    const user = await User.findById(userId)
+    if (!user) {
+        return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
+    }
+
+    if (room.adminId !== req.user.userId) {
+        return res.status(StatusCodes.UNAUTHORIZED).json({ msg: "You are not authorized to reject join requests" })
+    }
+
+    if (!room.requests.includes(userId)) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "User is not in the requests list" })
+    }
+
+    room.requests = room.requests.filter((request) => request !== userId)
+
+    try{
+        await room.save()
+    } catch (error) {
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Room not updated" })
+    }
     res.status(StatusCodes.OK).json({ room })
 }
 
 const removeMember = async (req, res) => {
-    const room = await Room.findById(req.params.id)
+    const { roomId, userId } = req.params
+    const room = await Room.findById(roomId)
     if (!room) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "Room not found" })
     }
-    room.members = room.members.filter((member) => member !== req.user.userId)
-    await room.save()
+
+    const user = await User.findById(userId)
+    if (!user) {
+        return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
+    }
+
+    if (room.adminId !== req.user.userId) {
+        return res.status(StatusCodes.UNAUTHORIZED).json({ msg: "You are not authorized to remove members" })
+    }
+
+    if (!room.members.includes(userId)) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "User is not in the members list" })
+    }
+
+    room.members = room.members.filter((member) => member !== userId)
+
+    try{
+        await room.save()
+    } catch (error) {
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Room not updated" })
+    }
     res.status(StatusCodes.OK).json({ room })
 }
 
 const getRoomsByCategory = async (req, res) => {
-    const rooms = await Room.find({ category: req.params.category })
-    res.status(StatusCodes.OK).json({ rooms })
+    const { category } = req.params
+    if (!category) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Please provide category" })
+    }
+
+    const rooms = await Room.find({ category: category.trim().toLowerCase() })
+    if (!rooms) {
+        return res.status(StatusCodes.NOT_FOUND).json({ msg: "No rooms found" })
+    }else{
+        res.status(StatusCodes.OK).json({ rooms })
+    }
+}
+
+const searchRoom = async (req, res) => {
+    const { name } = req.query
+    if (!name) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Please provide name" })
+    }
+
+    const room = await Room.findOne({ name: name.trim().toLowerCase() })
+    if (!room) {
+        return res.status(StatusCodes.NOT_FOUND).json({ msg: "Room not found" })
+    }else{
+        res.status(StatusCodes.OK).json({ room })
+    }
 }
 
 const updateRoomInfo = async (req, res) => {
-    const room = await Room.findById(req.params.id)
+    const { name, description, category } = req.body
+    const { id } = req.params
+
+    if (!name || !description || !category) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Please provide name, description and category" })
+    }
+
+    const room = await Room.findById(id)
     if (!room) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "Room not found" })
+    }else{
+        room.name = name.trim().toLowerCase()
+        room.description = description.trim().toLowerCase()
+        room.category = category.trim().toLowerCase()
+        room.updatedAt = new Date()
+        try{
+            await room.save()
+        }catch(err){
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Room not updated" })
+        }
+        res.status(StatusCodes.OK).json({ room })
     }
-    room.name = req.body.name
-    room.description = req.body.description
-    room.category = req.body.category
-    await room.save()
-    res.status(StatusCodes.OK).json({ room })
 }
 
 module.exports = {
     createRoom,
     getRooms,
-    searchRoom,
     deleteRoom,
     approveJoinRequest,
     rejectJoinRequest,
     removeMember,
-    getRoomsByCategory,
     updateRoomInfo,
+    searchRoom,
+    getRoomsByCategory,
 }
