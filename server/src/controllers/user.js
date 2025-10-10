@@ -103,8 +103,12 @@ const sendJoinRequest = async (req, res) => {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "Room not found" })
     }
 
-    if(room.members.includes(user._id)){
+    if (room.members.includes(user._id)){
         return res.status(StatusCodes.BAD_REQUEST).json({ msg: "You are already in this room" })
+    }
+
+    if (room.requests.includes(user._id)){
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "You have already sent a join request" })
     }
 
     room.requests.push(user._id)
