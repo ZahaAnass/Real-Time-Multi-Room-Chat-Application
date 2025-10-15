@@ -48,6 +48,16 @@ const deleteRoom = async (req, res) => {
 
 // ! TO TEST
 
+const getJoinRequests = async (req, res) => {
+    const room = await Room.findById({})
+
+    if (!room) {
+        return res.status(StatusCodes.NOT_FOUND).json({ msg: "Room not found" })
+    }
+
+    res.status(StatusCodes.OK).json({ room })
+}
+
 const approveJoinRequest = async (req, res) => {
     const { roomId, userId } = req.params
     const room = await Room.findById(roomId)
@@ -205,4 +215,5 @@ module.exports = {
     updateRoomInfo,
     searchRoom,
     getRoomsByCategory,
+    getJoinRequests,
 }
