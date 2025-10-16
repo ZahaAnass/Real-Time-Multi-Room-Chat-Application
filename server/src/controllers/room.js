@@ -8,12 +8,16 @@ const createRoom = async (req, res) => {
         return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Please provide name, description and category" })
     }
 
-    const user = await User.findById(req.user.userId)
+    const adminId = req.user.userId
+    if (!adminId) {
+        return res.status(StatusCodes.UNAUTHORIZED).json({ msg: "You are not authorized to create a room" })
+    }
+
+    const user = await User.findById(adminId)
     if (!user) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
     }
 
-    const adminId = user._id
     const members = [user._id]
     const requests = []
     
@@ -21,7 +25,7 @@ const createRoom = async (req, res) => {
         const room = await Room.create({ name, description, category, adminId, members, requests })
         res.status(StatusCodes.CREATED).json({ room })
     } catch (error) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Room not created" })
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Room not created", error })
     }
 }
 
@@ -37,7 +41,11 @@ const deleteRoom = async (req, res) => {
     if (!room) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "Room not found" })
     }
-    
+
+    if (room.adminId != req.user.userId) {
+        return res.status(StatusCodes.UNAUTHORIZED).json({ msg: "You are not authorized to delete a room" })
+    }
+
     try {
         await room.deleteOne()
         res.status(StatusCodes.OK).json({ msg: "Room deleted" })
@@ -46,17 +54,33 @@ const deleteRoom = async (req, res) => {
     }
 }
 
-// ! TO TEST
-
 const getJoinRequests = async (req, res) => {
-    const room = await Room.findById({})
+    const roomId = req.params.roomId;
+
+    if (!roomId) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Please provide roomId" })
+    }
+
+    const adminId = req.user.userId;
+
+    const room = await Room.findOne({ _id: roomId })
 
     if (!room) {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "Room not found" })
     }
 
-    res.status(StatusCodes.OK).json({ room })
+    if (room.adminId != adminId) {
+        return res.status(StatusCodes.UNAUTHORIZED).json({ msg: "You are not authorized to get join requests" })
+    }
+
+    if (!room?.requests?.length) {
+        return res.status(StatusCodes.NOT_FOUND).json({ msg: "No join requests found" })
+    }
+
+    res.status(StatusCodes.OK).json({ requests : room.requests })
 }
+
+// ! TO TEST
 
 const approveJoinRequest = async (req, res) => {
     const { roomId, userId } = req.params
