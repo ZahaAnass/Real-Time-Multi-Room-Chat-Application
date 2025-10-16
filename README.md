@@ -65,7 +65,7 @@ A full-stack real-time chat platform built with the MERN stack (MongoDB, Express
 
 - Frontend: React + Tailwind CSS + socket.io-client.
 - Backend: Node.js + Express.js + Socket.io.
-- Database: MongoDB with Mongoose (Users, Rooms, Messages, Requests).
+- Database: MongoDB with Mongoose (Users, Rooms, Messages).
 
 ## Pages (Frontend)
 
@@ -74,16 +74,3 @@ A full-stack real-time chat platform built with the MERN stack (MongoDB, Express
 - Dashboard → search rooms, create rooms
 - Room Page → chat window, members list, message input
 - Admin Panel (inside room) → manage requests, kick members, delete messages
-
-## Development Plan (10–12 Days)
-
-- Day 1–2: Backend setup, user authentication (JWT).
-- Day 3: Room model + routes (create, search, join request).
-- Day 4–5: Chat functionality with Socket.io (multi-room).
-- Day 6: Frontend auth pages (Register/Login).
-- Day 7: Room management UI (create/search/join).
-- Day 8: Chat room UI + socket integration.
-- Day 9: Admin controls (approve requests, kick members, delete messages).
-- Day 10: Message edit/delete functionality.
-- Day 11: UI refinements, security hardening.
-- Day 12: Testing, bug fixes, deployment.
