@@ -160,7 +160,7 @@ const removeMember = async (req, res) => {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
     }
 
-    if (room.adminId !== req.user.userId) {
+    if (room.adminId != req.user.userId) {
         return res.status(StatusCodes.UNAUTHORIZED).json({ msg: "You are not authorized to remove members" })
     }
 
@@ -168,14 +168,14 @@ const removeMember = async (req, res) => {
         return res.status(StatusCodes.BAD_REQUEST).json({ msg: "User is not in the members list" })
     }
 
-    room.members = room.members.filter((member) => member !== userId)
+    room.members = room.members.filter((member) => member != userId)
 
     try{
         await room.save()
     } catch (error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Room not updated" })
     }
-    res.status(StatusCodes.OK).json({ room })
+    res.status(StatusCodes.OK).json({ msg: "User removed successfully" })
 }
 
 const getRoomsByCategory = async (req, res) => {
