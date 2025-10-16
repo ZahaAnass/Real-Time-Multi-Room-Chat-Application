@@ -80,8 +80,6 @@ const getJoinRequests = async (req, res) => {
     res.status(StatusCodes.OK).json({ requests : room.requests })
 }
 
-// ! TO TEST
-
 const approveJoinRequest = async (req, res) => {
     const { roomId, userId } = req.params
     const room = await Room.findById(roomId)
@@ -132,7 +130,7 @@ const rejectJoinRequest = async (req, res) => {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
     }
 
-    if (room.adminId !== req.user.userId) {
+    if (room.adminId != req.user.userId) {
         return res.status(StatusCodes.UNAUTHORIZED).json({ msg: "You are not authorized to reject join requests" })
     }
 
@@ -140,16 +138,16 @@ const rejectJoinRequest = async (req, res) => {
         return res.status(StatusCodes.BAD_REQUEST).json({ msg: "User is not in the requests list" })
     }
 
-    room.requests = room.requests.filter((request) => request !== userId)
+    room.requests = room.requests.filter((request) => request != userId)
 
     try{
         await room.save()
     } catch (error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Room not updated" })
     }
-    res.status(StatusCodes.OK).json({ room })
+    res.status(StatusCodes.OK).json({ msg: "User rejected successfully" })
 }
-
+// ! TO TEST
 const removeMember = async (req, res) => {
     const { roomId, userId } = req.params
     const room = await Room.findById(roomId)
