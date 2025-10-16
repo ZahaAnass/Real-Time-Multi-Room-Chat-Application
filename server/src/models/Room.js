@@ -1,6 +1,4 @@
 const mongoose = require("mongoose")
-const date = new Date()
-const today = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
 
 const RoomSchema = new mongoose.Schema({
     name: {
@@ -38,7 +36,7 @@ const RoomSchema = new mongoose.Schema({
     ],
     createdAt: {
         type: Date,
-        default: today,
+        default: new Date(),
     },
 })
 
