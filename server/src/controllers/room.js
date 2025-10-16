@@ -95,7 +95,7 @@ const approveJoinRequest = async (req, res) => {
         return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" })
     }
 
-    if (room.adminId !== req.user.userId) {
+    if (room.adminId != req.user.userId) {
         return res.status(StatusCodes.UNAUTHORIZED).json({ msg: "You are not authorized to approve join requests" })
     }
 
@@ -103,7 +103,11 @@ const approveJoinRequest = async (req, res) => {
         return res.status(StatusCodes.BAD_REQUEST).json({ msg: "User is not in the requests list" })
     }
 
-    room.requests = room.requests.filter((request) => request !== userId)
+    if (room.members.includes(userId)) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ msg: "User is already in the members list" })
+    }
+
+    room.requests = room.requests.filter((request) => request != userId)
     room.members.push(userId)
 
     try{
@@ -112,7 +116,7 @@ const approveJoinRequest = async (req, res) => {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Room not updated" })
     }
 
-    res.status(StatusCodes.OK).json({ room })
+    res.status(StatusCodes.OK).json({ msg: "User approved" })
 }
 
 const rejectJoinRequest = async (req, res) => {
