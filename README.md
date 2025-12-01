@@ -74,3 +74,4 @@ A full-stack real-time chat platform built with the MERN stack (MongoDB, Express
 - Dashboard → search rooms, create rooms
 - Room Page → chat window, members list, message input
 - Admin Panel (inside room) → manage requests, kick members, delete messages
+
